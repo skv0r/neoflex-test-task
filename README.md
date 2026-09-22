@@ -8,7 +8,7 @@ SPA интернет-магазина аудиоаксессуаров по ма
 
 ## Макет
 
-Дизайн: **[Neoflex Invite Test — Figma](https://www.figma.com/design/bBkg5W8GRwGmhNCVeXevoN/Neoflex-Invite-Test?node-id=0-1)**
+Дизайн: **[Neoflex Invite Test — Figma](https://www.figma.com/design/qw44OPediu3iquaSvkLtqa/Neoflex-Invite-Test--Copy---Copy-?node-id=0-1)**
 
 ## Что нужно сделать
 
@@ -31,10 +31,11 @@ TypeScript и выбранный подход к стилям (CSS Modules, SCSS
 | UI | [React](https://react.dev/) 19 |
 | Язык | [TypeScript](https://www.typescriptlang.org/) |
 | Сборка и dev-сервер | [Vite](https://vite.dev/) 8 |
+| Стили | [Tailwind CSS](https://tailwindcss.com/) 4 |
 | Линтинг | [ESLint](https://eslint.org/) |
 | Компилятор React | [React Compiler](https://react.dev/learn/react-compiler) (Babel-плагин в шаблоне Vite) |
 
-Планируется по ТЗ: **React Router**, state-менеджмент и стилизация — по мере реализации (добавятся в `package.json`).
+Планируется по ТЗ: **React Router**, state-менеджмент — по мере реализации.
 
 ## Запуск
 
@@ -65,6 +66,3 @@ src/
   ...
 ```
 
----
-
-Если в вашем письме от Neoflex указана другая ссылка на Figma или дополнительные требования — замените блок «Макет» и пункты в «Что нужно сделать» на формулировки из официального ТЗ.
