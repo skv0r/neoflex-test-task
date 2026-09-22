@@ -1,78 +1,70 @@
-# React + TypeScript + Vite
+# Тестовое задание Neoflex
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+SPA интернет-магазина аудиоаксессуаров по макету Neoflex. Проект выполняется в рамках отбора на frontend-направление.
 
-Currently, two official plugins are available:
+## Компания
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+**[Neoflex](https://neoflex.ru/)** — IT-компания, системный интегратор и разработчик программного обеспечения для финансового сектора и других отраслей.
 
-## React Compiler
+## Макет
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+Дизайн: **[Neoflex Invite Test — Figma](https://www.figma.com/design/bBkg5W8GRwGmhNCVeXevoN/Neoflex-Invite-Test?node-id=0-1)**
 
-Note: This will impact Vite dev & build performances.
-You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
+## Что нужно сделать
 
-## Expanding the ESLint configuration
+1. **Каталог товаров** — главная страница со списком аудиоаксессуаров по макету.
+2. **Корзина** — страница с выбранными товарами, изменением количества и пересчётом суммы.
+3. **Роутинг** — минимум две страницы (каталог и корзина), переходы между ними.
+4. **Навигация** — возврат на главную через логотип или отдельную кнопку.
+5. **Корзина** — добавление и удаление позиций, актуальная итоговая стоимость.
+6. **Модальное окно** — подробная информация о товаре по клику на карточку.
+7. **Оформление заказа** — отдельный экран или форма оплаты (по ТЗ).
+8. **Адаптивность** — корректное отображение на разных ширине экрана.
+9. **Компоненты** — переиспользуемая структура UI, удобная для развития проекта.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+TypeScript и выбранный подход к стилям (CSS Modules, SCSS, styled-components и т.п.) — на усмотрение исполнителя, если иное не указано в письме с заданием.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Стек
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+| Категория | Технологии |
+|-----------|------------|
+| UI | [React](https://react.dev/) 19 |
+| Язык | [TypeScript](https://www.typescriptlang.org/) |
+| Сборка и dev-сервер | [Vite](https://vite.dev/) 8 |
+| Линтинг | [ESLint](https://eslint.org/) |
+| Компилятор React | [React Compiler](https://react.dev/learn/react-compiler) (Babel-плагин в шаблоне Vite) |
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Планируется по ТЗ: **React Router**, state-менеджмент и стилизация — по мере реализации (добавятся в `package.json`).
 
+## Запуск
+
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+Сборка для production:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+npm run build
+npm run preview
+```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Проверка линтером:
+
+```bash
+npm run lint
+```
+
+## Структура (целевая)
 
 ```
+src/
+  pages/          # каталог, корзина, оформление
+  components/     # карточка товара, модалка, шапка и др.
+  ...
+```
+
+---
+
+Если в вашем письме от Neoflex указана другая ссылка на Figma или дополнительные требования — замените блок «Макет» и пункты в «Что нужно сделать» на формулировки из официального ТЗ.
