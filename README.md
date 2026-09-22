@@ -8,7 +8,10 @@ SPA интернет-магазина аудиоаксессуаров по ма
 
 ## Макет
 
-Дизайн: **[Neoflex Invite Test — Figma](https://www.figma.com/design/qw44OPediu3iquaSvkLtqa/Neoflex-Invite-Test--Copy---Copy-?node-id=0-1)**
+
+=======
+Дизайн: **[Neoflex Invite Test — Figma](https://www.figma.com/design/qw44OPediu3iquaSvkLtqa/Neoflex-Invite-Test--Copy---Copy-?node-id=0-1&p=f&t=tulKD2beqt5b8YwL-0)**
+>>>>>>> 64c0123e92ada71d2670c7ef46b71620f20b42bc
 
 ## Что нужно сделать
 
