@@ -2,6 +2,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Layout from "./components/Layout/Layout"
 import CatalogPage from "./pages/CatalogPage"
+import NotFound from "./pages/NotFound"
 
 const router = createBrowserRouter([
   {
@@ -11,6 +12,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <CatalogPage/>
+      },
+      {
+        path: "*",
+        element: <NotFound/>
       },
     ]
   }
