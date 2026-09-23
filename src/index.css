@@ -49,7 +49,7 @@
 
 @layer components {
   .container-app {
-    @apply mx-auto w-full max-w-[var(--container-app)] px-4 sm:px-6 lg:px-8;
-
+    /* 1110px — ширина контента; на desktop без px, иначе 3×350 + 2×30 не влезают */
+    @apply mx-auto w-full max-w-[var(--container-app)] px-4 sm:px-6 lg:px-0;
   }
 }
