@@ -15,12 +15,28 @@ export type CartContextValue = {
 
 const CART_STORAGE_KEY = 'qpick-cart'
 
+function isCartLine(value: unknown): value is CartLine {
+    if (typeof value !== 'object' || value === null) return false
+    const line = value as Record<string, unknown>
+    return (
+        typeof line.productId === 'string' &&
+        typeof line.quantity === 'number' &&
+        line.quantity > 0
+    )
+}
+
 export function loadCart(): CartLine[] {
-    const savedCart = localStorage.getItem(CART_STORAGE_KEY)
-    return savedCart ? JSON.parse(savedCart) : []
+    try {
+        const savedCart = localStorage.getItem(CART_STORAGE_KEY)
+        if (!savedCart) return []
+        const parsed: unknown = JSON.parse(savedCart)
+        if (!Array.isArray(parsed)) return []
+        return parsed.filter(isCartLine)
+    } catch {
+        return []
+    }
 }
 
 export function saveCart(lines: CartLine[]): void {
     localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(lines))
 }
-

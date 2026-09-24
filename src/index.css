@@ -8,6 +8,7 @@
   --color-text-logo: #101010;
   --color-text-muted: #838383;
   --color-text-button: #000000;
+  --color-text-price-unit: #aaaaaa;
   --color-accent: #f5a623;
   --color-accent-hover: #e09510;
   --color-ink: #121212;
@@ -45,11 +46,21 @@
     @apply cursor-pointer border-0 bg-transparent p-0;
     font: inherit;
   }
+
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid var(--color-text-secondary);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  .text-link:focus-visible {
+    outline-offset: 4px;
+  }
 }
 
 @layer components {
   .container-app {
-    /* 1110 = 3×350 + 2×30; px-0 только когда влезают 3 карточки (sm:px-6 иначе перебивает min-[1110px]:px-0) */
     @apply mx-auto w-full max-w-[var(--container-app)] px-4 min-[640px]:max-[1109px]:px-6 min-[1110px]:px-0;
   }
 
@@ -68,5 +79,25 @@
     .catalog-grid {
       grid-template-columns: repeat(3, 350px);
     }
+  }
+
+  .icon-link {
+    @apply inline-flex shrink-0 items-center justify-center;
+    width: fit-content;
+    height: fit-content;
+  }
+
+  .icon-link img {
+    @apply h-7.5 w-auto max-w-none;
+    transition: opacity 0.15s ease;
+  }
+
+  .icon-link:hover img,
+  .icon-link:focus-visible img {
+    opacity: 0.7;
+  }
+
+  .icon-link:active img {
+    opacity: 0.5;
   }
 }
