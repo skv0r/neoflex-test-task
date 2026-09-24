@@ -126,7 +126,7 @@ const CartCard = ({
             </div>
 
             <div className="mr-20 flex min-w-0 flex-1 flex-col flex-wrap justify-center max-[475px]:mr-0 max-[475px]:w-full max-[475px]:items-center max-[475px]:text-center">
-                <h3 id={titleId} className="mb-3 max-w-full break-words text-[17px] font-medium leading-5.25 text-text-primary">
+                <h3 id={titleId} className="mb-3 max-w-full wrap-break-word text-[17px] font-medium leading-5.25 text-text-primary">
                     {item.title}
                 </h3>
                 <p className="text-[15px] font-semibold text-text-price-unit">{formatPrice(item.price)}</p>

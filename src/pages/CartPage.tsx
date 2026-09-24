@@ -44,7 +44,7 @@ const CartPage = () => {
         <>
             <h1 className="mb-4 text-[20px] text-text-primary">Корзина</h1>
             <div className="flex w-full flex-col flex-wrap items-center gap-8 max-[475px]:mb-7 lg:flex-row lg:items-start lg:justify-between">
-                <ul className="m-0 flex w-full max-w-[633px] list-none flex-col gap-5 p-0 max-lg:max-w-full">
+                <ul className="m-0 flex w-full max-w-158.25 list-none flex-col gap-5 p-0 max-lg:max-w-full">
                     {cartProducts.map(({ product, quantity }) => (
                         <li key={product.id}>
                             <Card
@@ -60,16 +60,16 @@ const CartPage = () => {
                 </ul>
 
                 <aside
-                    className="w-full max-w-[350px] shrink-0 overflow-hidden rounded-card bg-surface shadow-card max-lg:max-w-full"
+                    className="w-full max-w-87.5 shrink-0 overflow-hidden rounded-card bg-surface shadow-card max-lg:max-w-full"
                     aria-label="Итого по заказу"
                 >
                     <div className="mb-3.75 flex flex-wrap items-center justify-between px-5 pt-5 text-[17px] font-semibold uppercase text-text-primary">
-                        <span className="break-words">Итого</span>
-                        <span className="break-words">{totalPrice.toLocaleString('ru-RU')} ₽</span>
+                        <span className="wrap-break-word">Итого</span>
+                        <span className="wrap-break-word">{totalPrice.toLocaleString('ru-RU')} ₽</span>
                     </div>
                     <button
                         type="button"
-                        className="h-[65px] w-full rounded-b-card rounded-t-4xl bg-text-button text-[17px] font-semibold text-surface hover:brightness-90 active:brightness-75"
+                        className="h-16.25 w-full rounded-b-card rounded-t-4xl bg-text-button text-[17px] font-semibold text-surface hover:brightness-90 active:brightness-75"
                         aria-label="Перейти к оформлению заказа"
                     >
                         Перейти к оформлению

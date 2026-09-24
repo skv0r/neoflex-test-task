@@ -61,7 +61,7 @@
 
 @layer components {
   .container-app {
-    @apply mx-auto w-full max-w-[var(--container-app)] px-4 min-[640px]:max-[1109px]:px-6 min-[1110px]:px-0;
+    @apply mx-auto w-full max-w-app px-4 min-[640px]:max-[1109px]:px-6 min-[1110px]:px-0;
   }
 
   .catalog-grid {
@@ -82,13 +82,18 @@
   }
 
   .icon-link {
-    @apply inline-flex shrink-0 items-center justify-center;
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
     width: fit-content;
     height: fit-content;
   }
 
   .icon-link img {
-    @apply h-7.5 w-auto max-w-none;
+    height: calc(var(--spacing) * 7.5);
+    width: auto;
+    max-width: none;
     transition: opacity 0.15s ease;
   }
 

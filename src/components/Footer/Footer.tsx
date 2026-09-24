@@ -13,7 +13,7 @@ const Footer = () => {
         <footer className="container-app flex flex-wrap items-start justify-between gap-6 rounded-t-card bg-surface p-7.25 text-text-button max-[600px]:flex-col max-[600px]:items-center max-[600px]:text-center">
             <Link
                 to="/"
-                className="text-link inline-block w-fit self-start font-bold text-text-logo text-[25px] leading-[30px] hover:opacity-80 active:opacity-60 max-[600px]:self-center"
+                className="text-link inline-block w-fit self-start font-bold text-text-logo text-[25px] leading-7.5 hover:opacity-80 active:opacity-60 max-[600px]:self-center"
             >
                 QPICK
             </Link>
