@@ -14,7 +14,7 @@ const Header = () => {
         <header className="container-app mb-7 flex w-full justify-between py-3.75">
             <Link
                 to="/"
-                className="text-link inline-block w-fit font-bold text-text-logo text-[25px] leading-[30px] hover:opacity-80 active:opacity-60"
+                className="text-link inline-block w-fit font-bold text-text-logo text-[25px] leading-7.5 hover:opacity-80 active:opacity-60"
             >
                 QPICK
             </Link>
