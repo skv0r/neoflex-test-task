@@ -63,13 +63,11 @@ export default function CartProvider({ children }: { children: ReactNode }) {
 
   const totalCount = lines.reduce((sum, line) => sum + line.quantity, 0)
 
-  const totalPrice = useMemo(
-    () =>
+  const totalPrice = useMemo(() =>
       lines.reduce((sum, line) => {
         const product = getProductById(line.productId)
         return sum + (product?.price ?? 0) * line.quantity
-      }, 0),
-    [lines],
+      }, 0), [lines]
   )
 
   const value: CartContextValue = {
@@ -92,4 +90,4 @@ export function useCart(): CartContextValue {
   if (!ctx) throw new Error('useCart нужно вызывать внутри CartProvider')
   return ctx
 }
-
+

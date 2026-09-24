@@ -24,7 +24,7 @@ const CatalogCard = ({ item }: { item: Product }) => {
   const { addItem } = useCart()
 
   return (
-    <article className="flex h-101.75 w-[350px] shrink-0 flex-col justify-between rounded-card bg-surface px-5 pb-[26.5px] pt-3.75 text-[17px] shadow-card">
+    <section className="flex h-101.75 w-87.5 shrink-0 flex-col justify-between rounded-card bg-surface px-5 pb-[26.5px] pt-3.75 text-[17px] shadow-card">
       <img
         src={item.image}
         alt={item.title}
@@ -60,7 +60,7 @@ const CatalogCard = ({ item }: { item: Product }) => {
           </button>
         </div>
       </div>
-    </article>
+    </section>
   )
 }
 
@@ -74,7 +74,7 @@ const CartCard = ({
   const lineTotal = item.price * quantity
 
   return (
-    <article className="relative flex h-[218px] w-full max-w-[633px] rounded-card bg-surface p-5 shadow-card">
+    <section className="relative flex w-full rounded-card bg-surface p-4.5 pb-3.75 shadow-card">
       <button
         type="button"
         className="absolute right-5 top-5"
@@ -84,25 +84,25 @@ const CartCard = ({
         <img src="/trash.svg" alt="" className="size-6" />
       </button>
 
-      <div className="flex w-[147px] shrink-0 flex-col items-center">
+      <div className="flex w-36.75 shrink-0 flex-col items-center mr-6">
         <img
           src={item.image}
           alt={item.title}
-          className="h-[136px] w-full object-contain"
+          className="max-h-34 w-full object-contain mb-4.75"
         />
-        <div className="mt-3 flex items-center gap-4">
+        <div className="flex items-center gap-4">
           <button
             type="button"
-            className="flex size-7 items-center justify-center rounded-full bg-text-secondary text-lg leading-none text-surface"
+            className="flex size-7.5 items-center justify-center rounded-full bg-text-secondary text-[17px] leading-none text-surface"
             onClick={onDecrement}
             aria-label="Уменьшить количество"
           >
             −
           </button>
-          <span className="min-w-4 text-center font-medium">{quantity}</span>
+          <span className="min-w-4 text-[17px] text-center text-text-button font-semibold ">{quantity}</span>
           <button
             type="button"
-            className="flex size-7 items-center justify-center rounded-full bg-text-secondary text-lg leading-none text-surface"
+            className="flex size-7.5 items-center justify-center rounded-full bg-text-secondary text-[17px] leading-none text-surface"
             onClick={onIncrement}
             aria-label="Увеличить количество"
           >
@@ -111,16 +111,16 @@ const CartCard = ({
         </div>
       </div>
 
-      <div className="flex flex-1 flex-col pt-3 pl-6">
-        <h3 className="pr-8 text-[17px] font-semibold leading-snug text-text-primary">
+      <div className="flex flex-1 flex-col justify-center mr-20">
+        <h3 className="text-[17px] font-medium leading-5.25 text-text-primary mb-3 flex-wrap">
           {item.title}
         </h3>
-        <p className="mt-1 text-text-muted">{formatPrice(item.price)}</p>
-        <p className="mt-auto self-end text-[17px] font-semibold text-text-primary">
+        <p className="text-[#aaaaaa] font-semibold text-[15px]">{formatPrice(item.price)}</p>
+        <p className="absolute right-5 bottom-3.75 text-[17px] font-semibold text-text-primary">
           {formatPrice(lineTotal)}
         </p>
       </div>
-    </article>
+    </section>
   )
 }
 
