@@ -49,7 +49,24 @@
 
 @layer components {
   .container-app {
-    /* 1110px — ширина контента; на desktop без px, иначе 3×350 + 2×30 не влезают */
-    @apply mx-auto w-full max-w-[var(--container-app)] px-4 sm:px-6 lg:px-0;
+    /* 1110 = 3×350 + 2×30; px-0 только когда влезают 3 карточки (sm:px-6 иначе перебивает min-[1110px]:px-0) */
+    @apply mx-auto w-full max-w-[var(--container-app)] px-4 min-[640px]:max-[1109px]:px-6 min-[1110px]:px-0;
+  }
+
+  .catalog-grid {
+    @apply m-0 grid w-full list-none justify-center gap-7.5 p-0;
+    grid-template-columns: repeat(1, 350px);
+  }
+
+  @media (width >= 730px) {
+    .catalog-grid {
+      grid-template-columns: repeat(2, 350px);
+    }
+  }
+
+  @media (width >= 1110px) {
+    .catalog-grid {
+      grid-template-columns: repeat(3, 350px);
+    }
   }
 }
