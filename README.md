@@ -1,44 +1,28 @@
-# Тестовое задание Neoflex
+# QPICK — тестовое задание Neoflex
 
-SPA интернет-магазина аудиоаксессуаров по макету Neoflex. Проект выполняется в рамках отбора на frontend-направление.
+SPA магазина аудиоаксессуаров по [макету Figma](https://www.figma.com/design/qw44OPediu3iquaSvkLtqa/Neoflex-Invite-Test--Copy---Copy-?node-id=0-1).
 
-## Компания
+![Главная — каталог](docs/screenshots/01-catalog-desktop.png)
 
-**[Neoflex](https://neoflex.ru/)** — IT-компания, системный интегратор и разработчик программного обеспечения для финансового сектора и других отраслей.
+**Другие экраны:** [планшет](docs/screenshots/02-catalog-tablet.png) · [мобильный](docs/screenshots/03-catalog-mobile.png) · [корзина](docs/screenshots/04-cart-desktop.png) · [избранное](docs/screenshots/05-favourite-desktop.png) · [оформление](docs/screenshots/06-checkout-desktop.png) · [модалка товара](docs/screenshots/07-product-hover-modal.png)
 
-## Макет
+---
 
+## Что сделано
 
-=======
-Дизайн: **[Neoflex Invite Test — Figma](https://www.figma.com/design/qw44OPediu3iquaSvkLtqa/Neoflex-Invite-Test--Copy---Copy-?node-id=0-1&p=f&t=tulKD2beqt5b8YwL-0)**
->>>>>>> 64c0123e92ada71d2670c7ef46b71620f20b42bc
+| Раздел | Суть |
+| --- | --- |
+| Каталог | две секции товаров, карточка с ценой, рейтингом, «Купить», избранное |
+| Корзина | добавление, ±, удаление, итого, переход на checkout |
+| Избранное | localStorage, чекбоксы, перенос выбранного в корзину |
+| Модалка | hover 1,5 с на карточке каталога, затемнение экрана, описание-заглушка |
+| Оформление | отдельный роут, сумма заказа, экран загрузки |
+| Роутинг | `/`, `/cart`, `/favourite`, `/checkout`, 404 |
+| Состояние | `CartContext` / `FavouriteContext`, persist в localStorage |
 
-## Что нужно сделать
+**Стек:** React 19, TypeScript, Vite 8, Tailwind 4, React Router 7.
 
-1. **Каталог товаров** — главная страница со списком аудиоаксессуаров по макету.
-2. **Корзина** — страница с выбранными товарами, изменением количества и пересчётом суммы.
-3. **Роутинг** — минимум две страницы (каталог и корзина), переходы между ними.
-4. **Навигация** — возврат на главную через логотип или отдельную кнопку.
-5. **Корзина** — добавление и удаление позиций, актуальная итоговая стоимость.
-6. **Модальное окно** — подробная информация о товаре по клику на карточку.
-7. **Оформление заказа** — отдельный экран или форма оплаты (по ТЗ).
-8. **Адаптивность** — корректное отображение на разных ширине экрана.
-9. **Компоненты** — переиспользуемая структура UI, удобная для развития проекта.
-
-TypeScript и выбранный подход к стилям (CSS Modules, SCSS, styled-components и т.п.) — на усмотрение исполнителя, если иное не указано в письме с заданием.
-
-## Стек
-
-| Категория | Технологии |
-|-----------|------------|
-| UI | [React](https://react.dev/) 19 |
-| Язык | [TypeScript](https://www.typescriptlang.org/) |
-| Сборка и dev-сервер | [Vite](https://vite.dev/) 8 |
-| Стили | [Tailwind CSS](https://tailwindcss.com/) 4 |
-| Линтинг | [ESLint](https://eslint.org/) |
-| Компилятор React | [React Compiler](https://react.dev/learn/react-compiler) (Babel-плагин в шаблоне Vite) |
-
-Планируется по ТЗ: **React Router**, state-менеджмент — по мере реализации.
+---
 
 ## Запуск
 
@@ -47,25 +31,20 @@ npm install
 npm run dev
 ```
 
-Сборка для production:
-
 ```bash
 npm run build
 npm run preview
-```
-
-Проверка линтером:
-
-```bash
 npm run lint
 ```
 
-## Структура (целевая)
+---
+
+## Структура
 
 ```
-src/
-  pages/          # каталог, корзина, оформление
-  components/     # карточка товара, модалка, шапка и др.
-  ...
+src/pages/          CatalogPage, CartPage, FavouritePage, CheckoutPage, NotFound
+src/components/     Card, Header, Footer, Layout, OrderSummary, ProductHoverDetails
+src/context/        корзина и избранное
+src/data/catalog.ts товары
+docs/screenshots/   скриншоты
 ```
-
