@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useCart } from '../../context/CartContext'
-
-const favCount = 2 // заглушка до избранного
+import { useFavourite } from '../../context/FavouriteContext'
 
 const iconLinkClass = 'icon-link relative inline-block'
 
@@ -9,6 +8,7 @@ const iconImgClass = 'size-5.75'
 
 const Header = () => {
     const { totalCount } = useCart()
+    const { totalCount: favCount } = useFavourite()
 
     return (
         <header className="container-app mb-7 flex w-full justify-between py-3.75">

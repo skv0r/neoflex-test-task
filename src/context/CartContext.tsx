@@ -24,6 +24,25 @@ export default function CartProvider({ children }: { children: ReactNode }) {
         })
     }
 
+    function addLines(incoming: CartLine[]) {
+        if (incoming.length === 0) return
+        setLines((prev) => {
+            const next = [...prev]
+            for (const line of incoming) {
+                const index = next.findIndex((entry) => entry.productId === line.productId)
+                if (index === -1) {
+                    next.push({ ...line })
+                } else {
+                    next[index] = {
+                        ...next[index],
+                        quantity: next[index].quantity + line.quantity,
+                    }
+                }
+            }
+            return next
+        })
+    }
+
     function removeItem(productId: string) {
         setLines((prev) => prev.filter((line) => line.productId !== productId))
     }
@@ -60,6 +79,7 @@ export default function CartProvider({ children }: { children: ReactNode }) {
     const value: CartContextValue = {
         lines,
         addItem,
+        addLines,
         removeItem,
         incrementQuantity,
         decrementQuantity,
@@ -72,7 +92,7 @@ export default function CartProvider({ children }: { children: ReactNode }) {
     )
 }
 
-// eslint-disable-next-line react-refresh/only-export-components -- хук рядом с провайдером
+// eslint-disable-next-line react-refresh/only-export-components
 export function useCart(): CartContextValue {
     const ctx = useContext(CartContext)
     if (!ctx) throw new Error('useCart нужно вызывать внутри CartProvider')

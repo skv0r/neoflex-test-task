@@ -105,4 +105,50 @@
   .icon-link:active img {
     opacity: 0.5;
   }
+
+  .product-hover-backdrop {
+    animation: product-hover-backdrop-in 0.25s ease-out both;
+  }
+
+  .product-hover-panel {
+    transform: translate(-50%, -50%);
+    animation: product-hover-panel-in 0.28s ease-out both;
+  }
+
+  .product-hover-progress {
+    animation: product-hover-progress 1.5s linear forwards;
+    transform-origin: left center;
+  }
+}
+
+@keyframes product-hover-backdrop-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes product-hover-panel-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes product-hover-progress {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
 }

@@ -1,9 +1,11 @@
 import Card from '../components/Card/Card'
-import { getProductById, type Product } from '../data/catalog'
+import OrderSummary from '../components/OrderSummary/OrderSummary'
 import { useCart } from '../context/CartContext'
-import { Link } from 'react-router-dom'
+import { mapLinesToProducts } from '../utils/mapLinesToProducts'
+import { Link, useNavigate } from 'react-router-dom'
 
 const CartPage = () => {
+    const navigate = useNavigate()
     const {
         lines,
         removeItem,
@@ -12,16 +14,7 @@ const CartPage = () => {
         totalPrice,
     } = useCart()
 
-    const cartProducts = lines
-        .map((line) => {
-            const product = getProductById(line.productId)
-            if (!product) return null
-            return { product, quantity: line.quantity }
-        })
-        .filter(
-            (entry): entry is { product: Product; quantity: number } =>
-                entry != null,
-        )
+    const cartProducts = mapLinesToProducts(lines)
 
     if (cartProducts.length === 0) {
         return (
@@ -59,22 +52,20 @@ const CartPage = () => {
                     ))}
                 </ul>
 
-                <aside
-                    className="w-full max-w-87.5 shrink-0 overflow-hidden rounded-card bg-surface shadow-card max-lg:max-w-full"
-                    aria-label="Итого по заказу"
-                >
-                    <div className="mb-3.75 flex flex-wrap items-center justify-between px-5 pt-5 text-[17px] font-semibold uppercase text-text-primary">
-                        <span className="wrap-break-word">Итого</span>
-                        <span className="wrap-break-word">{totalPrice.toLocaleString('ru-RU')} ₽</span>
-                    </div>
-                    <button
-                        type="button"
-                        className="h-16.25 w-full rounded-b-card rounded-t-4xl bg-text-button text-[17px] font-semibold text-surface hover:brightness-90 active:brightness-75"
-                        aria-label="Перейти к оформлению заказа"
-                    >
-                        Перейти к оформлению
-                    </button>
-                </aside>
+                <OrderSummary
+                    totalPrice={totalPrice}
+                    ariaLabel="Итого по заказу"
+                    footer={
+                        <button
+                            type="button"
+                            className="h-16.25 w-full rounded-b-card rounded-t-4xl bg-text-button text-[17px] font-semibold text-surface hover:brightness-90 active:brightness-75"
+                            aria-label="Перейти к оформлению заказа"
+                            onClick={() => navigate('/checkout', { state: { totalPrice } })}
+                        >
+                            Перейти к оформлению
+                        </button>
+                    }
+                />
             </div>
         </>
     )

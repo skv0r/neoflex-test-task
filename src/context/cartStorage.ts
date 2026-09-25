@@ -6,6 +6,7 @@ export type CartLine = {
 export type CartContextValue = {
     lines: CartLine[]
     addItem: (productId: string) => void
+    addLines: (lines: CartLine[]) => void
     removeItem: (productId: string) => void
     incrementQuantity: (productId: string) => void
     decrementQuantity: (productId: string) => void

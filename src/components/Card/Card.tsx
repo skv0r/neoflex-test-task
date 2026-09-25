@@ -1,5 +1,7 @@
 import type { Product } from '../../data/catalog'
+import ProductHoverDetails from '../ProductHoverDetails/ProductHoverDetails'
 import { useCart } from '../../context/CartContext'
+import { useFavourite } from '../../context/FavouriteContext'
 import { formatPrice } from '../../utils/formatPrice'
 
 type CatalogCardProps = {
@@ -20,50 +22,68 @@ type CardProps = CatalogCardProps | CartCardProps
 
 const CatalogCard = ({ item }: { item: Product }) => {
     const { addItem } = useCart()
+    const { toggleItem, isFavourite } = useFavourite()
     const titleId = `product-title-${item.id}`
+    const inFavourite = isFavourite(item.id)
 
     return (
-        <article
-            aria-labelledby={titleId}
-            className="flex h-101.75 w-87.5 shrink-0 flex-col justify-between rounded-card bg-surface px-5 pb-[26.5px] pt-3.75 text-[17px] shadow-card"
-        >
-            <img
-                src={item.image}
-                alt={item.title}
-                className="mx-auto h-59.25 w-55 object-contain"
-            />
-            <div className="flex min-h-18.5 flex-col justify-between">
-                <div className="flex items-start justify-between gap-3">
-                    <h3 id={titleId} className="font-semibold leading-5.25 text-text-primary">
-                        {item.title}
-                    </h3>
-                    <div className="flex shrink-0 flex-col items-end leading-tight">
-                        <span className="font-semibold text-text-secondary">
-                            {formatPrice(item.price)}
-                        </span>
-                        {item.oldPrice != null && (
-                            <span className="text-sm text-text-secondary/60 line-through">
-                                {formatPrice(item.oldPrice)}
+        <ProductHoverDetails item={item}>
+            <article
+                aria-labelledby={titleId}
+                className="relative flex h-101.75 w-full flex-col justify-between rounded-card bg-surface px-5 pb-[26.5px] pt-3.75 text-[17px] shadow-card"
+            >
+                <button
+                    type="button"
+                    className="absolute right-5 top-5 hover:opacity-80 active:opacity-60"
+                    onClick={() => toggleItem(item.id)}
+                    aria-label={inFavourite ? `Убрать ${item.title} из избранного` : `Добавить ${item.title} в избранное`}
+                    aria-pressed={inFavourite}
+                >
+                    <img
+                        src={inFavourite ? '/fav-filled.svg' : '/fav.svg'}
+                        alt=""
+                        className="size-5"
+                        aria-hidden
+                    />
+                </button>
+                <img
+                    src={item.image}
+                    alt={item.title}
+                    className="mx-auto h-59.25 w-55 object-contain"
+                />
+                <div className="flex min-h-18.5 flex-col justify-between">
+                    <div className="flex items-start justify-between gap-3">
+                        <h3 id={titleId} className="font-semibold leading-5.25 text-text-primary">
+                            {item.title}
+                        </h3>
+                        <div className="flex shrink-0 flex-col items-end leading-tight">
+                            <span className="font-semibold text-text-secondary">
+                                {formatPrice(item.price)}
                             </span>
-                        )}
+                            {item.oldPrice != null && (
+                                <span className="text-sm text-text-secondary/60 line-through">
+                                    {formatPrice(item.oldPrice)}
+                                </span>
+                            )}
+                        </div>
+                    </div>
+                    <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2.5">
+                            <img src="/star.png" alt="" className="size-4" aria-hidden />
+                            <span className="text-text-muted">{item.rating}</span>
+                        </div>
+                        <button
+                            type="button"
+                            className="font-semibold text-text-button hover:opacity-80 active:opacity-60"
+                            onClick={() => addItem(item.id)}
+                            aria-label={`Купить ${item.title}`}
+                        >
+                            Купить
+                        </button>
                     </div>
                 </div>
-                <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2.5">
-                        <img src="/star.png" alt="" className="size-4" aria-hidden />
-                        <span className="text-text-muted">{item.rating}</span>
-                    </div>
-                    <button
-                        type="button"
-                        className="font-semibold text-text-button hover:opacity-80 active:opacity-60"
-                        onClick={() => addItem(item.id)}
-                        aria-label={`Купить ${item.title}`}
-                    >
-                        Купить
-                    </button>
-                </div>
-            </div>
-        </article>
+            </article>
+        </ProductHoverDetails>
     )
 }
 
